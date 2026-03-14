@@ -1,0 +1,20 @@
+# ??$$$ Render.com deployment config for backend (supports WebSockets / Socket.io)
+services:
+  - type: web
+    name: logistics-guardian-api
+    env: node
+    region: singapore   # Closest to India
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false      # Set manually in Render dashboard
+      - key: JWT_SECRET
+        sync: false      # Set manually in Render dashboard
+      - key: FRONTEND_URL
+        sync: false      # e.g. https://logiguard.vercel.app

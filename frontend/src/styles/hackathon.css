@@ -1,0 +1,443 @@
+/* ??$$$ Hackathon Mode styles */
+
+/* ===== MODE TOGGLE ===== */
+.mode-toggle {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mode-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  letter-spacing: 0.02em;
+}
+
+.mode-toggle-btn.hackathon {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  color: white;
+}
+
+.mode-toggle-btn.hackathon:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(245,158,11,0.5);
+}
+
+.mode-toggle-btn.normal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.mode-toggle-btn.normal:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+/* ===== HACKATHON BANNER ===== */
+.hackathon-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  background: linear-gradient(90deg, #1a0533 0%, #0f1f5c 40%, #1a0533 100%);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, #f59e0b, #ef4444, #8b5cf6, #3b82f6, #f59e0b) 1;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.hackathon-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.hackathon-trophy {
+  font-size: 22px;
+  animation: bounce 1.5s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.hackathon-title {
+  font-size: 13px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hackathon-subtitle {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 1px;
+}
+
+.hackathon-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hk-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.hk-btn-seed {
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+  color: white;
+  box-shadow: 0 4px 12px rgba(16,185,129,0.3);
+}
+
+.hk-btn-seed:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(16,185,129,0.5); }
+.hk-btn-seed:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.hk-btn-simulate {
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  color: white;
+  box-shadow: 0 4px 12px rgba(239,68,68,0.3);
+}
+
+.hk-btn-simulate:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(239,68,68,0.5); }
+.hk-btn-simulate:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.hk-btn-tour {
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  color: white;
+  box-shadow: 0 4px 12px rgba(139,92,246,0.3);
+}
+
+.hk-btn-tour:hover { transform: translateY(-1px); }
+
+/* ===== WELCOME MODAL ===== */
+.hk-welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(8px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.hk-welcome-modal {
+  background: var(--bg-card);
+  border: 1px solid rgba(139,92,246,0.3);
+  border-radius: 24px;
+  padding: 0;
+  width: 92%;
+  max-width: 840px;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: 0 0 80px rgba(139,92,246,0.2), 0 0 40px rgba(59,130,246,0.1);
+  animation: slideUp 0.4s ease;
+}
+
+.hk-welcome-header {
+  background: linear-gradient(135deg, #1a0533 0%, #0f1f5c 100%);
+  padding: 32px 36px 24px;
+  border-radius: 24px 24px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hk-welcome-header::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -20%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(139,92,246,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hk-welcome-header::after {
+  content: '';
+  position: absolute;
+  bottom: -30%; right: -10%;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hk-welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245,158,11,0.15);
+  border: 1px solid rgba(245,158,11,0.4);
+  color: #f59e0b;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.hk-welcome-title {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.1;
+  position: relative;
+  z-index: 1;
+}
+
+.hk-welcome-title span {
+  background: linear-gradient(135deg, #60a5fa, #06b6d4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hk-welcome-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 10px;
+  line-height: 1.6;
+  max-width: 580px;
+  position: relative;
+  z-index: 1;
+}
+
+.hk-welcome-body {
+  padding: 28px 36px 32px;
+}
+
+/* Problem / Solution cards */
+.hk-ps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.hk-ps-card {
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.hk-ps-card.problem { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.2); }
+.hk-ps-card.solution { background: rgba(16,185,129,0.06); border-color: rgba(16,185,129,0.2); }
+
+.hk-ps-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.hk-ps-card.problem .hk-ps-label { color: var(--accent-red); }
+.hk-ps-card.solution .hk-ps-label { color: var(--accent-green); }
+
+.hk-ps-items { display: flex; flex-direction: column; gap: 6px; }
+
+.hk-ps-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Tech stack */
+.hk-tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.hk-tech-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+/* Impact metrics */
+.hk-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.hk-impact-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.hk-impact-value {
+  font-size: 24px;
+  font-weight: 900;
+  background: var(--gradient-blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hk-impact-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+/* ===== TOUR TOOLTIP ===== */
+.hk-tour-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  pointer-events: none;
+}
+
+.hk-tour-spotlight {
+  position: fixed;
+  border-radius: 12px;
+  box-shadow: 0 0 0 9999px rgba(0,0,0,0.72);
+  transition: all 0.4s ease;
+  z-index: 1501;
+  pointer-events: none;
+}
+
+.hk-tour-tip {
+  position: fixed;
+  background: var(--bg-card);
+  border: 1px solid rgba(139,92,246,0.5);
+  border-radius: 16px;
+  padding: 20px 22px;
+  width: 320px;
+  z-index: 1502;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 24px rgba(139,92,246,0.2);
+  pointer-events: all;
+  animation: slideUp 0.3s ease;
+}
+
+.hk-tour-step-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.hk-tour-tip-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.hk-tour-tip-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.hk-tour-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.hk-tour-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.hk-tour-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: all 0.2s;
+}
+
+.hk-tour-dot.active { background: var(--accent-purple); width: 18px; border-radius: 3px; }
+
+.hk-tour-btns { display: flex; gap: 8px; }
+
+/* ===== SEEDER TOAST ===== */
+.hk-seed-indicator {
+  position: fixed;
+  bottom: 80px;
+  right: 28px;
+  background: var(--bg-card);
+  border: 1px solid rgba(16,185,129,0.4);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-green);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  z-index: 2000;
+  animation: slideInRight 0.3s ease;
+}
+
+/* Offset layout when hackathon banner visible */
+.hackathon-mode-active .sidebar { top: 48px; height: calc(100vh - 48px); }
+.hackathon-mode-active .main-content { margin-top: 48px; }
+.hackathon-mode-active .topbar { top: 48px; }
